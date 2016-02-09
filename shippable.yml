@@ -13,11 +13,17 @@ rvm:
   - ruby-head
   - ree
 env:  
-  global:
-    - FOO=FUBU
+  M1=ONE
+  M2=TWO
 
   matrix:
-    - M1=ONE
+    include: 
+      - rvm: 3.4
+        env: M1=ONE
+    exclude:
+      - rvm: 4.4
+        env: M1=TWO
+   
 
 build:
   pre_ci:
